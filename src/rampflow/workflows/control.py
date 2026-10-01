@@ -126,5 +126,8 @@ class RampWorkflowControl:
     def commit_deicing_dispatch(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "deicing.dispatch.committed", subject, at, action, requirements=requirements)
 
+    def commit_ev_shuttle_dispatch(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "ev.shuttle.dispatch.committed", subject, at, action, requirements=requirements)
+
     def publish_apron_movement_safety(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "apron.movement.safety.decided", subject, at, action, requirements=requirements)
